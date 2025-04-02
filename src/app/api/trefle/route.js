@@ -3,7 +3,7 @@ import axios from "axios";
 export async function GET(req) {
   try {
     const { searchParams } = new URL(req.url);
-    const commonName = searchParams.get("commonName") || "tomato"
+    const commonName = searchParams.get("commonName");
 
 
     if (!commonName) {
@@ -31,12 +31,12 @@ export async function GET(req) {
       common_name: plant.common_name,
       scientific_name: plant.scientific_name,
       family: plant.family,
-      image_url: plant.family.image_url || "",
+      image_url: plant.image_url || "",
     }));
 
     return new Response(JSON.stringify({ plants: dataArray}), {
       status: 200,
-      headers: {"Content-Type": "applications/json"}
+      headers: {"Content-Type": "application/json"}
     })
   } catch (error) {
     return new Response(
