@@ -6,7 +6,7 @@ export async function GET(req) {
   const fullUrl = new URL(req.url, baseURL); // Use base URL for parsing
 
   const city = fullUrl.searchParams.get("city") || "Toronto"; 
-  const country = fullUrl.searchParams.get("country") ||"CA";
+  const country = fullUrl.searchParams.get("country") || "CA";
 
   try {
     const response = await axios.get(
