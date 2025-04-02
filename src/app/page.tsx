@@ -37,8 +37,10 @@ export default function Home() {
         const res = await fetch(`/api/trefle?commonName=${plantQuery}`);
         if (!res.ok) throw new Error("No plants!");
         const data = await res.json();
+
         console.log(data.plants);
         setPlantData(data.plants || []);
+        
       } catch (error) {
         console.error(error);
       }
